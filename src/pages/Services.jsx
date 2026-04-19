@@ -8,7 +8,7 @@ const services = [
     name: 'Mini Detail',
     price: '£50',
     priceTo: '£65',
-    icon: '✦',
+    icon: '///',
     color: '#0066ff',
     duration: '2–3 hrs',
     desc: 'The perfect refresh for a busy schedule. A thorough exterior hand wash, interior vacuum, dashboard wipe-down, and window clean inside and out.',
@@ -18,7 +18,7 @@ const services = [
     name: 'Full Detail',
     price: '£100',
     priceTo: '£160',
-    icon: '◈',
+    icon: '///',
     color: '#0055ee',
     duration: '5–8 hrs',
     popular: true,
@@ -29,7 +29,7 @@ const services = [
     name: 'Interior Deep Clean',
     price: '£60',
     priceTo: '£90',
-    icon: '⬡',
+    icon: '///',
     color: '#0077cc',
     duration: '3–5 hrs',
     desc: 'A full interior restoration using steam cleaning and hot water extraction. Perfect for vehicles with heavy soiling.',
@@ -39,7 +39,7 @@ const services = [
     name: 'Exterior Wash & Wax',
     price: '£50',
     priceTo: '£80',
-    icon: '◎',
+    icon: '///',
     color: '#0088ff',
     duration: '2–4 hrs',
     desc: 'A premium exterior detail focused on paint protection and that deep showroom shine.',
@@ -49,7 +49,7 @@ const services = [
     name: 'Paint Enhancement',
     price: '£150',
     priceTo: '£250',
-    icon: '◉',
+    icon: '///',
     color: '#0044cc',
     duration: '1–2 days',
     desc: 'Single-stage machine polish to remove light scratches, swirl marks, and oxidation — transforming your paint finish.',
@@ -59,7 +59,7 @@ const services = [
     name: 'Ceramic Coating',
     price: '£250',
     priceTo: '£400',
-    icon: '◑',
+    icon: '///',
     color: '#003399',
     duration: '2–3 days',
     desc: 'The ultimate in paint protection. Nano ceramic coating provides up to 3 years of hydrophobic protection and unrivalled gloss.',
@@ -111,7 +111,7 @@ export default function Services() {
                       background: 'var(--blue)', padding: '0.25rem 1.25rem',
                       fontSize: '0.5625rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#fff',
                       whiteSpace: 'nowrap',
-                    }}>★ Most Popular</div>
+                    }}>// Most Popular</div>
                   )}
                   {s.premium && (
                     <div style={{
@@ -125,9 +125,9 @@ export default function Services() {
 
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
                     <div>
-                      <div style={{ fontSize: '1.75rem', color: s.color, marginBottom: '0.75rem' }}>{s.icon}</div>
+                      <div style={{ width: '32px', height: '3px', background: s.color, marginBottom: '0.75rem' }} />
                       <h3 style={{ fontSize: '1.1875rem', fontWeight: 800, marginBottom: '0.25rem' }}>{s.name}</h3>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', letterSpacing: '0.05em' }}>⏱ {s.duration}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', letterSpacing: '0.05em' }}>{s.duration}</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
                       <div style={{ fontSize: '1.75rem', fontWeight: 900, color: 'var(--blue)', lineHeight: 1, letterSpacing: '-0.02em' }}>
@@ -155,7 +155,7 @@ export default function Services() {
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         {s.includes.map(item => (
                           <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', fontSize: '0.875rem', color: 'rgba(255,255,255,0.8)' }}>
-                            <span style={{ color: 'var(--blue)', fontSize: '0.625rem', flexShrink: 0 }}>▶</span>
+                            <span style={{ color: 'var(--blue)', fontSize: '0.625rem', flexShrink: 0 }}>&mdash;</span>
                             {item}
                           </div>
                         ))}
@@ -172,7 +172,7 @@ export default function Services() {
                       }}
                       onClick={(e) => { e.stopPropagation(); setActive(active === i ? null : i) }}
                     >
-                      {active === i ? '▲ Less' : '▼ See what\'s included'}
+                      {active === i ? 'Less' : 'See what\'s included'}
                     </button>
                     <Link
                       to="/contact"
@@ -180,7 +180,7 @@ export default function Services() {
                       style={{ fontSize: '0.75rem', padding: '0.5rem 1.25rem' }}
                       onClick={e => e.stopPropagation()}
                     >
-                      Book →
+                      Book
                     </Link>
                   </div>
                 </motion.div>
@@ -203,8 +203,8 @@ export default function Services() {
             Give us a call and we'll recommend the best service for your vehicle and budget.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="tel:07916266287" className="btn-primary"><span>☎</span> 07916 266287</a>
-            <Link to="/contact" className="btn-outline">Book Online →</Link>
+            <a href="tel:07916266287" className="btn-primary">07916 266287</a>
+            <Link to="/contact" className="btn-outline">Book Online</Link>
           </div>
         </AnimatedSection>
       </section>

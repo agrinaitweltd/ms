@@ -117,7 +117,7 @@ export default function Navbar() {
               onMouseEnter={e => e.target.style.color = '#fff'}
               onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.6)'}
             >
-              <span style={{ color: 'var(--blue)', marginRight: '0.25rem' }}>☎</span> 07916 266287
+              <span style={{ color: 'var(--blue)', marginRight: '0.25rem' }}>|</span> 07916 266287
             </a>
 
             <Link to="/contact" className="btn-primary" style={{ fontSize: '0.75rem', padding: '0.625rem 1.5rem' }}>

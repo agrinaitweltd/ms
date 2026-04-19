@@ -73,17 +73,17 @@ export default function Contact() {
 
                 {/* Contact items */}
                 {[
-                  { label: 'Phone', value: '07916 266287', link: 'tel:07916266287', icon: '☎' },
-                  { label: 'Location', value: '93 Old Fallings Cres, Wolverhampton WV10 9PS', icon: '⊙' },
-                  { label: 'Hours', value: 'Mon–Sat: 8am–6pm\nSunday: By appointment', icon: '◷' },
+                  { label: 'Phone', value: '07916 266287', link: 'tel:07916266287' },
+                  { label: 'Location', value: '93 Old Fallings Cres, Wolverhampton WV10 9PS' },
+                  { label: 'Hours', value: 'Mon–Sat: 8am–6pm\nSunday: By appointment' },
                 ].map(item => (
                   <div key={item.label} style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
                     <div style={{
                       width: '44px', height: '44px', flexShrink: 0,
                       background: 'rgba(0,102,255,0.1)', border: '1px solid rgba(0,102,255,0.2)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '1rem', color: 'var(--blue)',
-                    }}>{item.icon}</div>
+                      fontSize: '0.6875rem', fontWeight: 700, color: 'var(--blue)', letterSpacing: '0.05em',
+                    }}>{item.label.charAt(0)}</div>
                     <div>
                       <div style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '0.375rem' }}>{item.label}</div>
                       {item.link ? (
@@ -111,7 +111,7 @@ export default function Contact() {
                 </div>
 
                 <a href="tel:07916266287" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  <span>☎</span> Call Now: 07916 266287
+                  Call Now: 07916 266287
                 </a>
               </div>
             </AnimatedSection>
@@ -136,7 +136,7 @@ export default function Contact() {
                       background: 'rgba(0,102,255,0.1)', border: '2px solid var(--blue)',
                       borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontSize: '1.5rem', color: 'var(--blue)',
-                    }}>✓</div>
+                    }}>Done</div>
                     <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>Booking Request Sent!</h3>
                     <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '2rem' }}>
                       Thanks {form.name}! We'll be in touch shortly to confirm your appointment and arrange the deposit.
@@ -145,7 +145,7 @@ export default function Contact() {
                       onClick={() => { setSubmitted(false); setForm({ name: '', phone: '', email: '', service: '', notes: '', deposit: false }) }}
                       className="btn-outline"
                     >
-                      Submit Another →
+                      Submit Another
                     </button>
                   </motion.div>
                 ) : (
@@ -266,7 +266,7 @@ export default function Contact() {
                             cursor: 'pointer', transition: 'all 0.2s',
                           }}
                         >
-                          {form.deposit && <span style={{ fontSize: '0.75rem', color: '#fff', lineHeight: 1 }}>✓</span>}
+                          {form.deposit && <span style={{ fontSize: '0.75rem', color: '#fff', lineHeight: 1 }}>Done</span>}
                         </div>
                         <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                           I understand that a <strong style={{ color: '#fff' }}>20% non-refundable deposit</strong> is required to secure my booking. This deposit will be requested after confirmation.
@@ -276,7 +276,7 @@ export default function Contact() {
                     </div>
 
                     <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '0.875rem', padding: '1rem' }}>
-                      Send Booking Request →
+                      Send Booking Request
                     </button>
                   </motion.form>
                 )}

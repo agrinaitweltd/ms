@@ -41,7 +41,7 @@ export default function Reviews() {
             <div style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap', alignItems: 'center' }}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '4rem', fontWeight: 900, color: 'var(--blue)', letterSpacing: '-0.03em', lineHeight: 1 }}>5.0</div>
-                <div className="stars" style={{ fontSize: '1.125rem', margin: '0.5rem 0' }}>★★★★★</div>
+                <div className="stars" style={{ fontSize: '1.125rem', margin: '0.5rem 0', color: 'var(--blue)' }}>/ / / / /</div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Overall Rating</div>
               </div>
               <div style={{ height: '80px', width: '1px', background: 'rgba(255,255,255,0.08)' }} />
@@ -50,7 +50,7 @@ export default function Reviews() {
                 {[5,4,3,2,1].map(stars => (
                   <div key={stars} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.375rem' }}>
                     <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', width: '12px', textAlign: 'right' }}>{stars}</span>
-                    <span className="stars" style={{ fontSize: '0.625rem' }}>★</span>
+                    <span className="stars" style={{ fontSize: '0.625rem', color: 'var(--blue)' }}>/</span>
                     <div style={{
                       flex: 1, maxWidth: '180px', height: '6px',
                       background: 'var(--surface-3)', borderRadius: 3, overflow: 'hidden',
@@ -120,8 +120,8 @@ export default function Reviews() {
                     </div>
                   </div>
 
-                  <div className="stars" style={{ fontSize: '0.875rem', marginBottom: '0.875rem' }}>
-                    {'★'.repeat(r.rating)}
+                  <div className="stars" style={{ fontSize: '0.875rem', marginBottom: '0.875rem', color: 'var(--blue)' }}>
+                    {'/ '.repeat(r.rating).trim()}
                   </div>
 
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.75, fontStyle: 'italic' }}>
@@ -159,8 +159,8 @@ export default function Reviews() {
             Experience the MS Details difference for yourself. Book your detail today.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn-primary">Book Now →</Link>
-            <a href="tel:07916266287" className="btn-outline"><span>☎</span> 07916 266287</a>
+            <Link to="/contact" className="btn-primary">Book Now</Link>
+            <a href="tel:07916266287" className="btn-outline">07916 266287</a>
           </div>
         </AnimatedSection>
       </section>

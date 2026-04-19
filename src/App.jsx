@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import LoadingScreen from './components/LoadingScreen'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import Gallery from './pages/Gallery'
@@ -17,23 +18,25 @@ function ScrollToTop() {
 }
 
 const pageVariants = {
-  initial: { opacity: 0, y: 20 },
-  enter: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] } },
-  exit: { opacity: 0, y: -10, transition: { duration: 0.25 } }
+  initial: { opacity: 0 },
+  enter: { opacity: 1, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } },
+  exit: { opacity: 0, transition: { duration: 0.15 } }
 }
 
 function AnimatedRoutes() {
   const location = useLocation()
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<motion.div variants={pageVariants} initial="initial" animate="enter" exit="exit"><Home /></motion.div>} />
-        <Route path="/services" element={<motion.div variants={pageVariants} initial="initial" animate="enter" exit="exit"><Services /></motion.div>} />
-        <Route path="/gallery" element={<motion.div variants={pageVariants} initial="initial" animate="enter" exit="exit"><Gallery /></motion.div>} />
-        <Route path="/about" element={<motion.div variants={pageVariants} initial="initial" animate="enter" exit="exit"><About /></motion.div>} />
-        <Route path="/reviews" element={<motion.div variants={pageVariants} initial="initial" animate="enter" exit="exit"><Reviews /></motion.div>} />
-        <Route path="/contact" element={<motion.div variants={pageVariants} initial="initial" animate="enter" exit="exit"><Contact /></motion.div>} />
-      </Routes>
+      <motion.div key={location.pathname} variants={pageVariants} initial="initial" animate="enter" exit="exit" style={{ minHeight: '100vh' }}>
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </motion.div>
     </AnimatePresence>
   )
 }
@@ -42,6 +45,7 @@ export default function App() {
   return (
     <Router>
       <div className="app-shell">
+        <LoadingScreen />
         <ScrollToTop />
         <Navbar />
         <AnimatedRoutes />

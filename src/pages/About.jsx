@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom'
 import AnimatedSection from '../components/AnimatedSection'
 
 const values = [
-  { icon: '◈', title: 'Professional Grade', desc: 'We use only the highest quality detailing products — the same brands trusted by industry professionals.' },
-  { icon: '⬡', title: 'Fully Insured', desc: 'Your vehicle is fully protected while in our care. We carry comprehensive public liability insurance.' },
-  { icon: '✦', title: 'No Shortcuts', desc: 'Every vehicle receives the same meticulous attention to detail, regardless of age or value.' },
-  { icon: '◉', title: 'Flexible Bookings', desc: 'We work around your schedule. Weekday, weekend and early morning slots available.' },
-  { icon: '◎', title: 'Transparent Pricing', desc: 'No hidden costs. What we quote is what you pay. Pre-detail consultation always included.' },
-  { icon: '◑', title: 'Local Business', desc: 'Based in Wolverhampton, proud to serve the local community with a service you can trust.' },
+  { title: 'Professional Grade', desc: 'We use only the highest quality detailing products — the same brands trusted by industry professionals.' },
+  { title: 'Fully Insured', desc: 'Your vehicle is fully protected while in our care. We carry comprehensive public liability insurance.' },
+  { title: 'No Shortcuts', desc: 'Every vehicle receives the same meticulous attention to detail, regardless of age or value.' },
+  { title: 'Flexible Bookings', desc: 'We work around your schedule. Weekday, weekend and early morning slots available.' },
+  { title: 'Transparent Pricing', desc: 'No hidden costs. What we quote is what you pay. Pre-detail consultation always included.' },
+  { title: 'Local Business', desc: 'Based in Wolverhampton, proud to serve the local community with a service you can trust.' },
 ]
 
 const timeline = [
@@ -49,7 +49,7 @@ export default function About() {
                 <div className="img-placeholder cut-corner" style={{ aspectRatio: '3/4', position: 'relative' }}>
                   <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1rem' }}>
                     <div style={{ width: '64px', height: '64px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <span style={{ color: 'rgba(255,255,255,0.15)', fontSize: '2rem' }}>◈</span>
+                      <span style={{ color: 'rgba(255,255,255,0.15)', fontSize: '2rem' }}>+</span>
                     </div>
                     <span style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.15)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Team Photo</span>
                   </div>
@@ -61,7 +61,7 @@ export default function About() {
                   padding: '1.25rem 1.75rem', textAlign: 'center',
                 }}>
                   <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--blue)', letterSpacing: '-0.03em', lineHeight: 1 }}>5.0</div>
-                  <div className="stars" style={{ fontSize: '0.75rem', margin: '0.25rem 0' }}>★★★★★</div>
+                  <div className="stars" style={{ fontSize: '0.75rem', margin: '0.25rem 0', color: 'var(--blue)' }}>/ / / / /</div>
                   <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Google Rating</div>
                 </div>
                 <div style={{
@@ -90,7 +90,7 @@ export default function About() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '2.5rem' }}>
                 {['Fully insured', 'Professional-grade products', 'No shortcuts', 'Flexible bookings', 'Transparent pricing', 'Local business'].map(item => (
                   <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-                    <span style={{ color: 'var(--blue)', fontSize: '0.5rem', flexShrink: 0 }}>▶</span>
+                    <span style={{ color: 'var(--blue)', fontSize: '0.5rem', flexShrink: 0 }}>&mdash;</span>
                     <span style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.8)' }}>{item}</span>
                   </div>
                 ))}
@@ -98,7 +98,7 @@ export default function About() {
 
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <Link to="/contact" className="btn-primary">Book Now</Link>
-                <a href="tel:07916266287" className="btn-outline"><span>☎</span> 07916 266287</a>
+                <a href="tel:07916266287" className="btn-outline">07916 266287</a>
               </div>
             </AnimatedSection>
           </div>
@@ -118,7 +118,6 @@ export default function About() {
             {values.map((v, i) => (
               <AnimatedSection key={v.title} delay={i * 0.08}>
                 <div className="card" style={{ padding: '2rem' }}>
-                  <div style={{ fontSize: '1.5rem', color: 'var(--blue)', marginBottom: '1rem' }}>{v.icon}</div>
                   <h3 style={{ fontWeight: 700, marginBottom: '0.625rem' }}>{v.title}</h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.7 }}>{v.desc}</p>
                 </div>

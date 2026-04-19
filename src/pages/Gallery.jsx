@@ -105,7 +105,7 @@ export default function Gallery() {
                   >
                     <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '0.5rem' }}>
                       <div style={{ width: '44px', height: '44px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '1.25rem' }}>◈</span>
+                        <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '1.25rem' }}>+</span>
                       </div>
                       <span style={{ fontSize: '0.5625rem', color: 'rgba(255,255,255,0.15)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{item.category}</span>
                     </div>
@@ -154,7 +154,7 @@ export default function Gallery() {
                 className="btn-outline"
                 onClick={() => setVisible(v => v + 9)}
               >
-                Load More ↓
+                Load More
               </button>
             </div>
           )}
@@ -204,7 +204,7 @@ export default function Gallery() {
               >×</button>
               <div className="img-placeholder" style={{ aspectRatio: '16/9', width: '100%', borderRadius: 0 }}>
                 <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '0.75rem' }}>
-                  <div style={{ fontSize: '3rem', color: 'rgba(255,255,255,0.1)' }}>◈</div>
+                  <div style={{ fontSize: '3rem', color: 'rgba(255,255,255,0.1)' }}>+</div>
                   <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{lightbox.category} — Photo #{lightbox.id}</span>
                 </div>
               </div>

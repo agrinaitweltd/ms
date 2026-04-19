@@ -5,10 +5,10 @@ import CountUp from 'react-countup'
 import AnimatedSection from '../components/AnimatedSection'
 
 const services = [
-  { name: 'Mini Detail', price: '£50–£65', icon: '✦', desc: 'Quick refresh — exterior wash, interior vacuum, window clean.' },
-  { name: 'Full Detail', price: '£100–£160', icon: '◈', desc: 'Complete inside-out detail. Our most popular package.', popular: true },
-  { name: 'Interior Deep Clean', price: '£60–£90', icon: '⬡', desc: 'Steam clean, shampoo, leather condition, full interior restore.' },
-  { name: 'Ceramic Coating', price: '£250–£400', icon: '◉', desc: 'Long-lasting nano ceramic protection — up to 3 years.' },
+  { name: 'Mini Detail', price: '£50–£65', desc: 'Quick refresh — exterior wash, interior vacuum, window clean.' },
+  { name: 'Full Detail', price: '£100–£160', desc: 'Complete inside-out detail. Our most popular package.', popular: true },
+  { name: 'Interior Deep Clean', price: '£60–£90', desc: 'Steam clean, shampoo, leather condition, full interior restore.' },
+  { name: 'Ceramic Coating', price: '£250–£400', desc: 'Long-lasting nano ceramic protection — up to 3 years.' },
 ]
 
 const stats = [
@@ -109,13 +109,8 @@ export default function Home() {
                 padding: '0.5rem 1rem', marginBottom: '2rem',
               }}
             >
-              <span style={{ color: '#f5c518', fontSize: '0.75rem' }}>★★★★★</span>
-              <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.05em' }}>
-                5.0 · 15 Reviews on Google
-              </span>
-              <span style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.15)' }} />
-              <span style={{ fontSize: '0.6875rem', color: 'var(--blue)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                Wolverhampton
+              <span style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--blue)' }}>
+                Premium Car Detailing
               </span>
             </motion.div>
 
@@ -153,11 +148,10 @@ export default function Home() {
               style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', marginBottom: '3rem' }}
             >
               <a href="tel:07916266287" className="btn-primary" style={{ fontSize: '0.8125rem' }}>
-                <span>☎</span> Book Now — 07916 266287
+                Book Now - 07916 266287
               </a>
               <Link to="/services" className="btn-outline">
                 View Services
-                <span style={{ fontSize: '0.75rem' }}>→</span>
               </Link>
             </motion.div>
 
@@ -168,7 +162,6 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.65 }}
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', fontSize: '0.8125rem' }}
             >
-              <span style={{ color: 'var(--blue)', fontSize: '0.875rem' }}>⊙</span>
               93 Old Fallings Cres, Wolverhampton WV10 9PS
             </motion.div>
           </div>
@@ -195,7 +188,7 @@ export default function Home() {
                 <h2 className="section-title">What We <span>Offer</span></h2>
               </div>
               <Link to="/services" className="btn-outline" style={{ fontSize: '0.75rem', padding: '0.625rem 1.5rem' }}>
-                View All Services →
+                View All Services
               </Link>
             </div>
           </AnimatedSection>
@@ -212,7 +205,6 @@ export default function Home() {
                       padding: '0.25rem 0.625rem', color: '#fff',
                     }}>Most Popular</div>
                   )}
-                  <div style={{ fontSize: '1.5rem', color: 'var(--blue)', marginBottom: '1rem' }}>{s.icon}</div>
                   <h3 style={{ fontSize: '1.0625rem', fontWeight: 700, marginBottom: '0.5rem' }}>{s.name}</h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>{s.desc}</p>
                   <div style={{ fontSize: '1.375rem', fontWeight: 800, color: 'var(--blue)' }}>{s.price}</div>
@@ -251,7 +243,7 @@ export default function Home() {
               <h2 className="section-title">Recent <span>Gallery</span></h2>
             </div>
             <Link to="/gallery" className="btn-outline" style={{ fontSize: '0.75rem', padding: '0.625rem 1.5rem' }}>
-              View Full Gallery →
+              View Full Gallery
             </Link>
           </AnimatedSection>
 
@@ -264,7 +256,7 @@ export default function Home() {
                 >
                   <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '0.5rem' }}>
                     <div style={{ width: '40px', height: '40px', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '1.25rem' }}>◈</span>
+                      <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '1.25rem' }}>+</span>
                     </div>
                     <span style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Photo</span>
                   </div>
@@ -296,7 +288,7 @@ export default function Home() {
               <div className="img-placeholder cut-corner" style={{ aspectRatio: '4/3', position: 'relative' }}>
                 <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1rem' }}>
                   <div style={{ width: '60px', height: '60px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '2rem' }}>◈</span>
+                    <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '2rem' }}>+</span>
                   </div>
                   <span style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.15)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>About Image</span>
                 </div>
@@ -322,12 +314,12 @@ export default function Home() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2.5rem' }}>
                 {['Fully insured', 'Professional-grade products', 'No shortcuts', 'Flexible bookings', 'Transparent pricing'].map(item => (
                   <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <span style={{ color: 'var(--blue)', fontSize: '0.75rem' }}>▶</span>
+                    <span style={{ color: 'var(--blue)', fontSize: '0.5rem' }}>&mdash;</span>
                     <span style={{ fontSize: '0.9375rem', color: 'rgba(255,255,255,0.85)' }}>{item}</span>
                   </div>
                 ))}
               </div>
-              <Link to="/about" className="btn-outline" style={{ fontSize: '0.75rem' }}>Learn More →</Link>
+              <Link to="/about" className="btn-outline" style={{ fontSize: '0.75rem' }}>Learn More</Link>
             </AnimatedSection>
           </div>
         </div>
@@ -353,7 +345,7 @@ export default function Home() {
                       <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>{r.name}</div>
                       <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{r.time}</div>
                     </div>
-                    <div className="stars" style={{ fontSize: '0.875rem' }}>{'★'.repeat(r.rating)}</div>
+                    <div className="stars" style={{ fontSize: '0.875rem', color: 'var(--blue)' }}>{'/ '.repeat(r.rating).trim()}</div>
                   </div>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.9375rem', lineHeight: 1.7, fontStyle: 'italic' }}>
                     "{r.text}"
@@ -364,7 +356,7 @@ export default function Home() {
           </div>
 
           <AnimatedSection style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link to="/reviews" className="btn-outline">Read All Reviews →</Link>
+            <Link to="/reviews" className="btn-outline">Read All Reviews</Link>
           </AnimatedSection>
         </div>
         <style>{`
@@ -399,10 +391,10 @@ export default function Home() {
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="tel:07916266287" className="btn-primary">
-                <span>☎</span> Call 07916 266287
+                Call 07916 266287
               </a>
               <Link to="/contact" className="btn-outline">
-                Online Booking →
+                Online Booking
               </Link>
             </div>
           </AnimatedSection>
