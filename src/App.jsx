@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import './index.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import LoadingScreen from './components/LoadingScreen'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import Gallery from './pages/Gallery'
@@ -33,9 +33,6 @@ function AppRoutes() {
 export default function App() {
   return (
     <Router>
-      <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 99999, background: 'red', color: 'white', padding: '10px', fontSize: '16px' }}>
-        APP LOADED
-      </div>
       <div className="app-shell">
         <ScrollToTop />
         <Navbar />

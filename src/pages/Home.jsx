@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useState, useCallback, useEffect } from 'react'
-import CountUp from 'react-countup'
 import AnimatedSection from '../components/AnimatedSection'
 
 const heroWords = ['Detailing', 'Valeting', 'Protection', 'Restoration']
@@ -82,7 +81,7 @@ function StatItem({ value, suffix, label, delay }) {
       }}
     >
       <div style={{ fontSize: 'clamp(2.5rem,5vw,4rem)', fontWeight: 900, letterSpacing: '-0.03em', color: 'var(--blue)', lineHeight: 1 }}>
-        <CountUp end={value} duration={2} suffix={suffix} />
+        {value}{suffix}
       </div>
       <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
         {label}
