@@ -41,10 +41,12 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <Navbar />
-      <AnimatedRoutes />
-      <Footer />
+      <div className="app-shell">
+        <ScrollToTop />
+        <Navbar />
+        <AnimatedRoutes />
+        <Footer />
+      </div>
     </Router>
   )
 }

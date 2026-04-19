@@ -22,6 +22,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
   useEffect(() => { setOpen(false) }, [location])
 
   return (
@@ -143,7 +151,7 @@ export default function Navbar() {
                   transformOrigin: 'center',
                   transform: open
                     ? i === 0 ? 'rotate(45deg) translate(5px,5px)'
-                    : i === 1 ? 'opacity: 0; scaleX(0)'
+                    : i === 1 ? 'scaleX(0)'
                     : 'rotate(-45deg) translate(5px,-5px)'
                     : 'none',
                   opacity: open && i === 1 ? 0 : 1,
@@ -164,10 +172,13 @@ export default function Navbar() {
             transition={{ duration: 0.25 }}
             style={{
               position: 'fixed', top: '80px', left: 0, right: 0,
+              bottom: 0,
               background: 'rgba(8,8,8,0.98)',
               borderBottom: '1px solid rgba(255,255,255,0.08)',
               zIndex: 999,
               padding: '1.5rem 2rem 2rem',
+              overflowY: 'auto',
+              overscrollBehavior: 'contain',
             }}
             className="nav-blur"
           >

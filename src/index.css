@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
 @layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
   :root {
     --blue: #0066ff;
     --blue-bright: #3385ff;
@@ -22,11 +28,18 @@
   }
 
   html {
+    overflow-y: auto;
     scroll-behavior: smooth;
   }
 
+.app-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
   body {
     background-color: var(--black);
+  min-height: 100dvh;
     color: var(--text-primary);
     font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
