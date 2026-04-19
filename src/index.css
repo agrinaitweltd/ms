@@ -204,10 +204,7 @@
 }
 
 .hero-bg {
-  background:
-    radial-gradient(ellipse at 60% 50%, rgba(0, 66, 204, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 20% 80%, rgba(0, 30, 100, 0.1) 0%, transparent 50%),
-    #080808;
+  background: #080808;
 }
 
 .nav-blur {

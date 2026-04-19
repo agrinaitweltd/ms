@@ -55,22 +55,12 @@ export default function Navbar() {
           justifyContent: 'space-between',
         }}>
           {/* Logo */}
-          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <div style={{
-              width: '36px', height: '36px',
-              background: 'var(--blue)',
-              clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '0.75rem', fontWeight: 900, color: '#fff', letterSpacing: '0.05em',
-            }}>MS</div>
-            <div>
-              <div style={{ fontSize: '1.0625rem', fontWeight: 800, letterSpacing: '0.08em', color: '#fff', lineHeight: 1, textTransform: 'uppercase' }}>
-                MS <span style={{ color: 'var(--blue)' }}>Details</span>
-              </div>
-              <div style={{ fontSize: '0.5625rem', letterSpacing: '0.25em', color: 'var(--text-secondary)', textTransform: 'uppercase', lineHeight: 1, marginTop: 2 }}>
-                Premium Detailing
-              </div>
-            </div>
+          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <img
+              src="/logo.png"
+              alt="MS Details"
+              style={{ height: '52px', width: 'auto', objectFit: 'contain', display: 'block' }}
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -182,6 +172,9 @@ export default function Navbar() {
             }}
             className="nav-blur"
           >
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.5rem' }}>
+              <img src="/logo.png" alt="MS Details" style={{ height: '44px', width: 'auto' }} />
+            </div>
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {links.map(l => (
                 <Link

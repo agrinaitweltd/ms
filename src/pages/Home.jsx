@@ -53,8 +53,21 @@ export default function Home() {
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
-        overflow: 'hidden',
-      }} className="hero-bg grid-overlay">
+        /* overflow: clip does NOT create a scroll container — safe to use here */
+        overflow: 'clip',
+        backgroundImage: 'url(/herobg.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+        backgroundRepeat: 'no-repeat',
+      }} className="grid-overlay">
+
+        {/* Dark overlay so text stays readable */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(135deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.65) 50%, rgba(8,8,8,0.80) 100%)',
+          zIndex: 0,
+          pointerEvents: 'none',
+        }} />
 
         {/* Radial glow */}
         <div style={{
@@ -63,6 +76,7 @@ export default function Home() {
           background: 'radial-gradient(circle, rgba(0,102,255,0.12) 0%, transparent 70%)',
           transform: 'translateY(-50%)',
           pointerEvents: 'none',
+          zIndex: 0,
         }} />
 
         {/* Blueprint corner accents */}
@@ -72,15 +86,16 @@ export default function Home() {
             ...(pos.includes('top') ? { top: '2rem' } : { bottom: '2rem' }),
             ...(pos.includes('left') ? { left: '2rem' } : { right: '2rem' }),
             width: '40px', height: '40px',
-            borderTop: pos.includes('top') ? '1px solid rgba(0,102,255,0.3)' : 'none',
-            borderBottom: pos.includes('bottom') ? '1px solid rgba(0,102,255,0.3)' : 'none',
-            borderLeft: pos.includes('left') ? '1px solid rgba(0,102,255,0.3)' : 'none',
-            borderRight: pos.includes('right') ? '1px solid rgba(0,102,255,0.3)' : 'none',
+            borderTop: pos.includes('top') ? '1px solid rgba(0,102,255,0.4)' : 'none',
+            borderBottom: pos.includes('bottom') ? '1px solid rgba(0,102,255,0.4)' : 'none',
+            borderLeft: pos.includes('left') ? '1px solid rgba(0,102,255,0.4)' : 'none',
+            borderRight: pos.includes('right') ? '1px solid rgba(0,102,255,0.4)' : 'none',
             pointerEvents: 'none',
+            zIndex: 1,
           }} />
         ))}
 
-        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem', paddingTop: '6rem', width: '100%' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem', paddingTop: '6rem', width: '100%', position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '780px' }}>
 
             {/* Badge */}
@@ -163,6 +178,7 @@ export default function Home() {
         <div style={{
           position: 'absolute', bottom: '2rem', left: '50%',
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem',
+          zIndex: 1,
         }} className="animate-bounce-scroll">
           <span style={{ fontSize: '0.5625rem', letterSpacing: '0.2em', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Scroll</span>
           <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, var(--blue), transparent)' }} />

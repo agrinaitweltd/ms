@@ -22,17 +22,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}>
-              <div style={{
-                width: '36px', height: '36px',
-                background: 'var(--blue)',
-                clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '0.75rem', fontWeight: 900, color: '#fff',
-              }}>MS</div>
-              <div style={{ fontSize: '1rem', fontWeight: 800, letterSpacing: '0.08em', color: '#fff', textTransform: 'uppercase' }}>
-                MS <span style={{ color: 'var(--blue)' }}>Details</span>
-              </div>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <img src="/logo.png" alt="MS Details" style={{ height: '48px', width: 'auto', objectFit: 'contain' }} />
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
               Professional car detailing in Wolverhampton. Restoring every vehicle to its very best.
