@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -17,27 +16,17 @@ function ScrollToTop() {
   return null
 }
 
-const pageVariants = {
-  initial: { opacity: 0 },
-  enter: { opacity: 1, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } },
-  exit: { opacity: 0, transition: { duration: 0.15 } }
-}
-
-function AnimatedRoutes() {
+function AppRoutes() {
   const location = useLocation()
   return (
-    <AnimatePresence mode="wait">
-      <motion.div key={location.pathname} variants={pageVariants} initial="initial" animate="enter" exit="exit" style={{ minHeight: '100vh' }}>
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </motion.div>
-    </AnimatePresence>
+    <Routes location={location}>
+      <Route path="/" element={<Home />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/gallery" element={<Gallery />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/reviews" element={<Reviews />} />
+      <Route path="/contact" element={<Contact />} />
+    </Routes>
   )
 }
 
@@ -48,7 +37,7 @@ export default function App() {
         <LoadingScreen />
         <ScrollToTop />
         <Navbar />
-        <AnimatedRoutes />
+        <AppRoutes />
         <Footer />
       </div>
     </Router>

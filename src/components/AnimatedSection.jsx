@@ -1,26 +1,46 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { useRef, useEffect, useState } from 'react'
 
 export default function AnimatedSection({ children, delay = 0, direction = 'up', className = '', style = {} }) {
-  const [ref, inView] = useInView({
-    threshold: 0,
-    triggerOnce: true,
-    rootMargin: '0px 0px -40px 0px',
-  })
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
 
-  const yStart = direction === 'up' ? 30 : direction === 'down' ? -30 : 0
-  const xStart = direction === 'left' ? 30 : direction === 'right' ? -30 : 0
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.unobserve(el)
+        }
+      },
+      { threshold: 0, rootMargin: '0px 0px -30px 0px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  const translate =
+    direction === 'up' ? 'translateY(24px)' :
+    direction === 'down' ? 'translateY(-24px)' :
+    direction === 'left' ? 'translateX(24px)' :
+    direction === 'right' ? 'translateX(-24px)' :
+    direction === 'scale' ? 'scale(0.97)' : 'none'
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: yStart, x: xStart, scale: direction === 'scale' ? 0.97 : 1 }}
-      animate={inView ? { opacity: 1, y: 0, x: 0, scale: 1 } : { opacity: 0, y: yStart, x: xStart }}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
       className={className}
-      style={style}
+      style={{
+        ...style,
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'none' : translate,
+        transition: `opacity 0.6s cubic-bezier(0.25,0.1,0.25,1) ${delay}s, transform 0.6s cubic-bezier(0.25,0.1,0.25,1) ${delay}s`,
+        willChange: visible ? 'auto' : 'opacity, transform',
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

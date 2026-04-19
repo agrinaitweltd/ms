@@ -1,8 +1,56 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useState, useEffect, useCallback } from 'react'
 import { useInView } from 'react-intersection-observer'
 import CountUp from 'react-countup'
 import AnimatedSection from '../components/AnimatedSection'
+
+const heroWords = ['Detailing', 'Valeting', 'Protection', 'Restoration']
+
+function TypeWriter({ words, period = 2500 }) {
+  const [text, setText] = useState('')
+  const [wordIndex, setWordIndex] = useState(0)
+  const [deleting, setDeleting] = useState(false)
+
+  const tick = useCallback(() => {
+    const current = words[wordIndex]
+    if (!deleting) {
+      setText(current.substring(0, text.length + 1))
+      if (text.length === current.length) {
+        setTimeout(() => setDeleting(true), period)
+        return
+      }
+    } else {
+      setText(current.substring(0, text.length - 1))
+      if (text.length === 0) {
+        setDeleting(false)
+        setWordIndex((wordIndex + 1) % words.length)
+        return
+      }
+    }
+  }, [text, wordIndex, deleting, words, period])
+
+  useEffect(() => {
+    const speed = deleting ? 60 : 120
+    const timer = setTimeout(tick, speed)
+    return () => clearTimeout(timer)
+  }, [tick, deleting])
+
+  return (
+    <span>
+      {text}
+      <span style={{
+        display: 'inline-block',
+        width: '3px',
+        height: '0.85em',
+        background: 'var(--blue)',
+        marginLeft: '4px',
+        verticalAlign: 'middle',
+        animation: 'blink-cursor 0.7s step-end infinite',
+      }} />
+    </span>
+  )
+}
 
 const services = [
   { name: 'Mini Detail', price: '£50–£65', desc: 'Quick refresh — exterior wash, interior vacuum, window clean.' },
@@ -128,7 +176,8 @@ export default function Home() {
               }}
             >
               Premium<br />
-              <span style={{ color: 'var(--blue)' }}>Car</span> Detailing
+              <span style={{ color: 'var(--blue)' }}>Car</span>{' '}
+              <TypeWriter words={heroWords} period={2200} />
             </motion.h1>
 
             <motion.p
