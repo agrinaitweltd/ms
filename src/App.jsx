@@ -33,8 +33,10 @@ function AppRoutes() {
 export default function App() {
   return (
     <Router>
+      <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 99999, background: 'red', color: 'white', padding: '10px', fontSize: '16px' }}>
+        APP LOADED
+      </div>
       <div className="app-shell">
-        <LoadingScreen />
         <ScrollToTop />
         <Navbar />
         <AppRoutes />
