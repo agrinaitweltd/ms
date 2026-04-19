@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { useState, useEffect, useCallback } from 'react'
-import { useInView } from 'react-intersection-observer'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import CountUp from 'react-countup'
 import AnimatedSection from '../components/AnimatedSection'
 
@@ -73,22 +72,42 @@ const reviews = [
 ]
 
 function StatItem({ value, suffix, label, delay }) {
-  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true })
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.unobserve(el)
+        }
+      },
+      { threshold: 0, rootMargin: '0px 0px -20px 0px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay }}
-      style={{ textAlign: 'center' }}
+      style={{
+        textAlign: 'center',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'none' : 'translateY(20px)',
+        transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
+      }}
     >
       <div style={{ fontSize: 'clamp(2.5rem,5vw,4rem)', fontWeight: 900, letterSpacing: '-0.03em', color: 'var(--blue)', lineHeight: 1 }}>
-        {inView ? <CountUp end={value} duration={2} suffix={suffix} /> : `0${suffix}`}
+        {visible ? <CountUp end={value} duration={2} suffix={suffix} /> : `0${suffix}`}
       </div>
       <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
         {label}
       </div>
-    </motion.div>
+    </div>
   )
 }
 

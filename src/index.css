@@ -28,8 +28,8 @@
   }
 
   html {
-    overflow-y: auto;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
 .app-shell {
@@ -44,7 +44,6 @@
     font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
   }
 
   ::selection {
