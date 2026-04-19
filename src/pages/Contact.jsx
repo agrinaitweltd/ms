@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 
 const services = [
@@ -118,46 +118,47 @@ export default function Contact() {
 
             {/* Form */}
             <AnimatedSection direction="left">
-              <AnimatePresence mode="wait">
-                {submitted ? (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    style={{
-                      background: 'var(--surface-2)',
-                      border: '1px solid rgba(0,102,255,0.25)',
-                      padding: '4rem 3rem',
-                      textAlign: 'center',
-                    }}
+              {submitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    background: 'var(--surface-2)',
+                    border: '1px solid rgba(0,102,255,0.25)',
+                    padding: '4rem 3rem',
+                    textAlign: 'center',
+                  }}
+                >
+                  <div style={{
+                    width: '64px', height: '64px', margin: '0 auto 1.5rem',
+                    background: 'rgba(0,102,255,0.1)', border: '2px solid var(--blue)',
+                    borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '1.5rem', color: 'var(--blue)',
+                  }}>Done</div>
+                  <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>Booking Request Sent!</h3>
+                  <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '2rem' }}>
+                    Thanks {form.name}! We'll be in touch shortly to confirm your appointment and arrange the deposit.
+                  </p>
+                  <button
+                    onClick={() => { setSubmitted(false); setForm({ name: '', phone: '', email: '', service: '', notes: '', deposit: false }) }}
+                    className="btn-outline"
                   >
-                    <div style={{
-                      width: '64px', height: '64px', margin: '0 auto 1.5rem',
-                      background: 'rgba(0,102,255,0.1)', border: '2px solid var(--blue)',
-                      borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '1.5rem', color: 'var(--blue)',
-                    }}>Done</div>
-                    <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>Booking Request Sent!</h3>
-                    <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '2rem' }}>
-                      Thanks {form.name}! We'll be in touch shortly to confirm your appointment and arrange the deposit.
-                    </p>
-                    <button
-                      onClick={() => { setSubmitted(false); setForm({ name: '', phone: '', email: '', service: '', notes: '', deposit: false }) }}
-                      className="btn-outline"
-                    >
-                      Submit Another
-                    </button>
-                  </motion.div>
-                ) : (
-                  <motion.form
-                    key="form"
-                    onSubmit={handleSubmit}
-                    style={{
-                      background: 'var(--surface-2)',
-                      border: '1px solid var(--border)',
-                      padding: '3rem',
-                    }}
-                    noValidate
+                    Submit Another
+                  </button>
+                </motion.div>
+              ) : (
+                <motion.form
+                  onSubmit={handleSubmit}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    background: 'var(--surface-2)',
+                    border: '1px solid var(--border)',
+                    padding: '3rem',
+                  }}
+                  noValidate
                   >
                     <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '2rem', letterSpacing: '-0.01em' }}>
                       Booking Request
@@ -278,9 +279,8 @@ export default function Contact() {
                     <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '0.875rem', padding: '1rem' }}>
                       Send Booking Request
                     </button>
-                  </motion.form>
-                )}
-              </AnimatePresence>
+                </motion.form>
+              )}
             </AnimatedSection>
           </div>
         </div>
