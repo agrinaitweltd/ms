@@ -152,51 +152,82 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — full screen slide-in */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25 }}
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
             style={{
-              position: 'fixed', top: '80px', left: 0, right: 0,
-              bottom: 0,
-              background: 'rgba(8,8,8,0.98)',
-              borderBottom: '1px solid rgba(255,255,255,0.08)',
-              zIndex: 999,
-              padding: '1.5rem 2rem 2rem',
-              overflowY: 'auto',
-              overscrollBehavior: 'contain',
+              position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+              background: '#080808',
+              zIndex: 998,
+              display: 'flex',
+              flexDirection: 'column',
             }}
-            className="nav-blur"
           >
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.5rem' }}>
+            {/* Top bar */}
+            <div style={{
+              height: '80px', display: 'flex', alignItems: 'center',
+              justifyContent: 'space-between', padding: '0 2rem',
+              borderBottom: '1px solid rgba(255,255,255,0.06)',
+            }}>
               <img src="/logo.png" alt="MS Details" style={{ height: '44px', width: 'auto' }} />
+              <button
+                onClick={() => setOpen(false)}
+                style={{ background: 'none', border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer', padding: '8px 14px', color: '#fff', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}
+              >
+                Close
+              </button>
             </div>
-            <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {links.map(l => (
-                <Link
+
+            {/* Links */}
+            <nav style={{ flex: 1, padding: '2.5rem 2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.25rem' }}>
+              {links.map((l, i) => (
+                <motion.div
                   key={l.to}
-                  to={l.to}
-                  style={{
-                    textDecoration: 'none',
-                    fontSize: '1.125rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.05em',
-                    color: location.pathname === l.to ? 'var(--blue)' : '#fff',
-                    padding: '0.5rem 0',
-                    borderBottom: '1px solid rgba(255,255,255,0.05)',
-                  }}
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: i * 0.07 + 0.1 }}
                 >
-                  {l.label}
-                </Link>
+                  <Link
+                    to={l.to}
+                    style={{
+                      textDecoration: 'none',
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      fontSize: 'clamp(1.75rem, 7vw, 2.25rem)',
+                      fontWeight: 800,
+                      letterSpacing: '-0.02em',
+                      color: location.pathname === l.to ? 'var(--blue)' : '#fff',
+                      padding: '0.625rem 0',
+                      borderBottom: '1px solid rgba(255,255,255,0.05)',
+                    }}
+                  >
+                    {l.label}
+                    {location.pathname === l.to && (
+                      <span style={{ width: '8px', height: '8px', background: 'var(--blue)', borderRadius: '50%', flexShrink: 0 }} />
+                    )}
+                  </Link>
+                </motion.div>
               ))}
-              <Link to="/contact" className="btn-primary" style={{ marginTop: '0.5rem', justifyContent: 'center' }}>
-                Book Now
-              </Link>
             </nav>
+
+            {/* Bottom CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.3 }}
+              style={{ padding: '2rem', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}
+            >
+              <a href="tel:07916266287" className="btn-primary" style={{ justifyContent: 'center', fontSize: '0.875rem' }}>
+                Call to Book — 07916 266287
+              </a>
+              <p style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
+                Wolverhampton · Mon–Sat 8am–7pm
+              </p>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

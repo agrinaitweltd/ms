@@ -73,8 +73,9 @@ const reviews = [
 function StatItem({ value, suffix, label, delay }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, delay }}
       style={{
         textAlign: 'center',
@@ -392,7 +393,7 @@ export default function Home() {
                       <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>{r.name}</div>
                       <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{r.time}</div>
                     </div>
-                    <div className="stars" style={{ fontSize: '0.875rem', color: 'var(--blue)' }}>{'/ '.repeat(r.rating).trim()}</div>
+                    <div style={{ fontSize: '1rem', color: '#f5c518', letterSpacing: '2px' }}>{'★'.repeat(r.rating)}</div>
                   </div>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.9375rem', lineHeight: 1.7, fontStyle: 'italic' }}>
                     "{r.text}"

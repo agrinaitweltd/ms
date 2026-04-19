@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import './index.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import LoadingScreen from './components/LoadingScreen'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import Gallery from './pages/Gallery'
@@ -33,6 +34,7 @@ function AppRoutes() {
 export default function App() {
   return (
     <Router>
+      <LoadingScreen />
       <div className="app-shell">
         <ScrollToTop />
         <Navbar />

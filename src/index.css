@@ -239,7 +239,7 @@
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 .animate-bounce-scroll { animation: bounce-scroll 2s infinite; }
 
-/* Mobile animation enhancements */
+/* Mobile layout improvements */
 @media (max-width: 768px) {
   .card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -260,13 +260,12 @@
     transform: scale(0.96);
   }
 
-  .section-tag {
-    animation: slideInLeft 0.5s ease both;
+  .section-title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
   }
 
-  .section-title {
-    animation: fadeUp 0.6s ease both;
-    animation-delay: 0.1s;
+  .page-wrapper {
+    padding-top: 80px;
   }
 }
 
